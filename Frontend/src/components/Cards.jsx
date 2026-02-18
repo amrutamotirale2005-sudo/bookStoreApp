@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function Cards({ item }) {
   return (
+    console.log("Image URL:", item.image),
     <>
       <div className="mt-3 my-3 p-3"> 
         <div className="card w-92 bg-base-100 shadow-x1 hover:scale-105 duration-300 dark:bg-slate-900 dark:text-white dark:border">
