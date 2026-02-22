@@ -2,20 +2,16 @@
   "name": "bookstore",
   "version": "1.0.0",
   "description": "mern project",
-  "keywords": [
-    "mern",
-    "project"
-  ],
-  "homepage": "https://github.com/AmrutaMotirale/bookStoreApp#readme",
+  "homepage": "https://github.com/amrutamotirale2005-sudo/bookStoreApp#readme",
   "bugs": {
-    "url": "https://github.com/AmrutaMotirale/bookStoreApp/issues"
+    "url": "https://github.com/amrutamotirale2005-sudo/bookStoreApp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AmrutaMotirale/bookStoreApp.git"
+    "url": "git+https://github.com/amrutamotirale2005-sudo/bookStoreApp.git"
   },
   "license": "ISC",
-  "author": "Amruta Motirale",
+  "author": "Amruta",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -23,14 +19,12 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
-    "course": "^0.0.1",
-    "dotenv": "^16.6.1",
-    "express": "^4.22.1",
-    "mongoose": "^8.22.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "install": "^0.13.0",
+    "mongoose": "^9.2.1",
+    "nodemon": "^3.1.13"
   }
 }

@@ -40,10 +40,10 @@ function Navbar() {
   const navItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <a href="/">Home</a>
       </li>
       <li>
-        <Link to="/course">Course</Link>
+        <a href="/course">Course</a>
       </li>
       <li>
         <Link to="/contact">Contact</Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from "../context/AuthProvider.jsx";
 import { toast } from 'react-hot-toast';
-import { set } from 'react-hook-form';
+
 
 function Logout() {
   const [authUser, setAuthUser] = useAuth();
@@ -17,7 +17,7 @@ function Logout() {
       setTimeout(() => {
         window.location.reload(); // Refresh the page to update the UI
       }, 3000);
-    }catch(err){
+    }catch(error){
       toast.error("Logout failed. Please try again.");
       setTimeout(() => {}, 2000);
   }

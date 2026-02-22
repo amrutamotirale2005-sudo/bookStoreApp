@@ -1,28 +1,31 @@
-import React, { useEffect,useState } from "react";
+import React from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from "./Cards";
 import axios from "axios";
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function Freebook() {
-  const [book, setBook] = useState([]);
-  useEffect(() => {
-    const getBook = async () => {
-      try {
-        const res = await axios.get("http://localhost:4001/book");
-
+  const [books, setBook]=useState([]);
+  useEffect(()=>{
+    const getBook=async()=>{
+      try{
+        const res = await axios.get('http://localhost:4001/books');
+        console.log(res.data)
         const data = res.data.filter((data) => data.category === "Free");
         console.log(data);
         setBook(data);
-      } catch (error) {
-        console.log(error);
+      }catch(error){
+          console.log(error)
       }
-    };
+    }
     getBook();
-  }, []);
+  },[]);
 
-  var settings = {
+
+var settings = {
     dots: true,
     infinite: false,
     speed: 500,
@@ -55,25 +58,25 @@ function Freebook() {
         }
       }
     ]
-  };
-
+};
   return (
     <>
-      <div className=" max-w-screen-2xl container mx-auto md:px-20 px-4">
+      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4'>
         <div>
-          <h1 className="font-semibold text-xl pb-2">Free Offered Courses</h1>
-          <p>
-            Access free courses designed for beginners and learners.
-            Build practical skills, gain confidence, and start your learning journey without any fees.
-          </p>
+          <h1 className='font-semibold text-xl pb-2'>Free Offered Courses </h1>
+        <p>
+          Access free courses designed for beginners and learners.
+          Build practical skills, gain confidence, and start your learning journey without any fees.
+        </p>
         </div>
-        <div>
-          <Slider {...settings}>
-          {book.map((item)=>(
+      
+      <div>
+        <Slider {...settings}>
+          {books.map((item) =>(
             <Cards item={item} key={item.id} />
           ))}
-          </Slider>
-        </div>
+        </Slider>
+      </div>
       </div>
     </>
   );

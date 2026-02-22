@@ -1,53 +1,48 @@
-import React, { useState, useEffect } from "react";
-import Cards from "./Cards";
-import { Link } from "react-router-dom";
-import axios from "axios";    
-
+import React from 'react'
+import Cards from './Cards'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+import { useEffect, useState } from 'react'
 function Course() {
-  const [book, setBook] = useState([]);
-
-  useEffect(() => {
-    const getBooks = async () => {
-      try {
-        const res = await fetch("http://localhost:4001/book");
-        const data = await res.json();   
-        console.log(res.data);               
-        setBook(res.data);                  
-      } catch (error) {
-        console.log(error);
+  const [books, setBook]=useState([]);
+  useEffect(()=>{
+    const getBook=async()=>{
+      try{
+        const res = await axios.get('http://localhost:4001/books');
+        console.log(res.data)
+        setBook(res.data)
+      }catch(error){
+          console.log(error)
       }
-    };
-    getBooks();
-  }, []);
-
+    }
+    getBook();
+  },[]);
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:py-10 px-4">
-        <div className="mt-28 text-center">
-          <h1 className="text-2xl font-semibold md:text-4xl">
+      <div className='max-w-screen-2xl container mx-auto md:px-20 px-4'>
+        <div className='mt-28 items-center justify-center text-center'>
+          <h1 className='text-2xl md:text-4xl'>
             We're delighted to have you{" "}
-            <span className="text-pink-500">(Here! :)</span>
+            <span className="text-blue-500">Here! :)</span>
           </h1>
-
           <p className="mt-12">
             Explore our wide range of courses and start your learning journey today.
           </p>
-
-          <Link to="/">
-            <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-md">
-              Back
-            </button>
+          <Link to='/'>
+            <button className='mt-6 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 duration-300'>Back</button>
           </Link>
+          
         </div>
-
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-4">
-          {book.map((item) => (
-            <Cards key={item._id} item={item} />
-          ))}
+        <div className='mt-12 grid grid-cols-1 md:grid-cols-4 '>
+          {
+            books.map((item)=>(
+              <Cards key={item._id} item={item}/>
+            ))
+          }
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Course;
+export default Course
